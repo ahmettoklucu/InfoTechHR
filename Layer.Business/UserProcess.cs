@@ -19,7 +19,7 @@ namespace Layer.Business.User
 
             //Lambda - linQ
 
-            var KullaniciVerisi = (from Data in Context.TblKullanici where Data.KullaniciAdi == Username && Data.Sifre == Password select Data).SingleOrDefault();
+            var KullaniciVerisi = Context.TblKullanici.SingleOrDefault(p => p.KullaniciAdi == Username && p.Sifre == Password); //(from Data in Context.TblKullanici where Data.KullaniciAdi == Username && Data.Sifre == Password select Data).SingleOrDefault();
             if (KullaniciVerisi == null)
             {
                 Message = "Hatali bilgi girisi";
